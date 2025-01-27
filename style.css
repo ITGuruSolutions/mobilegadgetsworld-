@@ -1,0 +1,274 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.sticky-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff; /* Customize the background color */
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow for the navbar */
+}
+
+.navbar-brand {
+    font-weight: bold; /* Customize font style */
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Customize padding */
+}
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+     
+        body {
+            background-color: #f4f4f4; 
+        }
+
+        /* Enhance navbar appearance */
+        .navbar {
+            padding: 10px 0; /* Add padding at the top and bottom of the navbar */
+        }
+
+        /* Style the navbar brand */
+        .navbar-brand {
+            font-size: 24px;
+            color: #333; /* Dark gray color for the brand */
+            font-weight: bold;
+            margin-right: 30px; /* Add margin to the right of the brand */
+        }
+
+        /* Style the navigation links */
+        .navbar-nav .nav-item {
+            margin: 0 15px; /* Add more spacing between nav items */
+        }
+        .nav-link {
+            color: #007bff; /* Blue color for nav links */
+            transition: color 0.3s; /* Smooth transition for color change */
+        }
+        .nav-link:hover {
+            color: #0056b3; /* Darker blue color on hover */
+        }
+
+        /* Style the search input field */
+        .form-control {
+            border-color: #007bff; /* Blue border for input field */
+            color: #333; /* Dark gray text color */
+            margin-right: 10px; /* Add 10px spacing to the right of the search input */
+            width: 300px; /* Extend the search input width */
+        }
+
+        /* Style the shopping cart icon */
+        .cart-icon {
+            font-size: 24px;
+        }
+
+        /* Add zoom effect on hover for navigation items */
+        .navbar-nav .nav-item:hover,
+        .navbar-toggler-icon:hover,
+        .nav-link:hover {
+            transform: scale(1.1); /* Increase size by 10% on hover */
+            transition: transform 0.3s ease-in-out;
+        }
+
+        /* Center align content horizontally and vertically */
+        .center-content {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Spacing between icons and buttons */
+        .icon-space {
+            margin-right: 10px;
+        }
+
+        /* Spacing between buttons */
+        .button-space {
+            margin-right: 10px;
+        }
+
+        /* Add margin to the right of collapsed navigation elements */
+        .navbar-collapse .navbar-brand,
+        .navbar-collapse .navbar-nav {
+            margin-right: auto; /* Push collapsed elements to the right */
+        }
+    
+
+ /* Slider cover */
+ .carousel-inner {
+    max-height: 500px; /* Fixed height */
+}
+
+.carousel-item img {
+    max-width: 100%; /* Full width */
+    height: auto;
+}
+
+/* slider ended */
+
+/* card started */
+.card {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+.card-body {
+    padding: 1rem;
+}
+.card-img-top {
+    transition: transform 0.2s;
+}
+.card:hover .card-img-top {
+    transform: scale(1.2);
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+    .col-md-3 {
+        flex-basis: 50%; /* For smaller screens, make each card take 50% of the column width */
+    }
+}
+
+/* card ended */
+
+/* fooeter started */
+@media (max-width: 768px) {
+    .feedback-form textarea {
+        max-width: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+    }
+}
+
+/* Add CSS for desktop view */
+@media (min-width: 769px) {
+    .feedback-form textarea {
+        width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+    }
+}
+
+
+
+/* Style for the empty h5 element */
+.h5-fot {
+    position: relative;
+    color: #007BFF; /* Text color */
+    padding: 10px; /* Padding to create a box-like appearance */
+    transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+}
+
+/* Pseudo-element for hover effect */
+.h5-fot::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #007BFF; /* Background color */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+    z-index: -1; /* Place it behind the text */
+}
+
+/* Hover effect for the h5 element */
+.h5-fot:hover {
+    color: white; /* Change text color on hover */
+}
+
+/* Hover effect for the pseudo-element */
+.h5-fot:hover::before {
+    opacity: 1; /* Show the background on hover */
+}
+
+/* Zoom effect for icons */
+.btn-floating i {
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Hover effect for icons */
+.btn-floating:hover i {
+    transform: scale(1.2);
+}
+
+/* Footer Styles */
+footer {
+    background-color: #3e4551;
+    color: white;
+    position: relative;
+}
+.icon-red { color: #FF5733; }
+.icon-green { color: #25D366; }
+.icon-blue { color: #007BFF; }
+.icon-yellow { color: #FFC107; }
+
+/* Feedback Form Styles */
+.feedback-form {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the form label */
+.feedback-form label {
+    font-weight: bold;
+}
+
+/* Style the submit button */
+.feedback-form button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Style the submit button on hover */
+.feedback-form button:hover {
+    background-color: #0056b3;
+}
+
+/* Additional styles */
+.footer-text {
+    margin-top: 20px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+.feedback-form {
+    margin-top: 20px;
+}
+
+/* Add spacing between h5 and p tags */
+.contact-info {
+    margin-bottom: 20px; /* Adjust the margin as needed */
+}
+
+.footer-text {
+background-color: #333; /* Add background color if desired */
+color: #fff; /* Text color */
+padding: 1rem; /* Adjust padding as needed */
+width: 100%; /* Make it full-width */
+}
+.custom-google-map-container{
+
+    height:80%;
+}

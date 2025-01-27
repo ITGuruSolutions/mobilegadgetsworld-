@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <!-- Add any other stylesheets you need -->
+
+    <style>
+        /* Your custom styles here */
+        .cart-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Add more CSS styles as needed */
+    </style>
+</head>
+<body>
+    <!-- Cart Section -->
+    <div class="container mt-5">
+        <h2>Your Shopping Cart</h2>
+        <div class="cart-container" id="cart-items-container">
+            <!-- Cart items will be dynamically added here using JavaScript -->
+        </div>
+        <p class="cart-total">Total: ₹<span id="cart-total">0.00</span></p>
+        <div class="place-order">
+            <button class="btn btn-success" id="place-order">Place Your Order</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for managing the shopping cart will go here
+
+        // Sample cart array with item objects
+        const cart = [];
+
+        // Function to update the cart display
+        function updateCartDisplay() {
+            const cartItemsContainer = document.getElementById("cart-items-container");
+            const cartTotalElement = document.getElementById("cart-total");
+            const showPrice = true; // Set this to false if you want to hide prices
+
+            // Calculate the total price
+            let total = 0;
+
+            // Clear the cart display
+            cartItemsContainer.innerHTML = "";
+
+            // Iterate through the cart items and display them
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement("div");
+                cartItem.classList.add("cart-item");
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-title">${item.title}</h3>
+                        <p class="cart-item-price">${showPrice ? `₹${item.price.toFixed(2)}` : ""}</p>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <select class="form-select quantity-select" data-index="${index}">
+                            ${generateQuantityOptions(item.quantity)}
+                        </select>
+                    </div>
+                    <div class="cart-item-remove">
+                        <button class="btn btn-danger remove" data-index="${index}">Remove</button>
+                    </div>
+                `;
+
+                cartItemsContainer.appendChild(cartItem);
+
+                total += item.price * item.quantity;
+            });
+
+            // Update the cart total
+            cartTotalElement.textContent = total.toFixed(2);
+        }
+
+        // Function to generate quantity options for the dropdown
+        function generateQuantityOptions(selectedQuantity) {
+            let options = '';
+            for (let i = 1; i <= 10; i++) {
+                options += `<option value="${i}" ${i === selectedQuantity ? 'selected' : ''}>${i}</option>`;
+            }
+            return options;
+        }
+
+        // Event listener for quantity select change
+        document.addEventListener("change", (e) => {
+            if (e.target.classList.contains("quantity-select")) {
+                const index = parseInt(e.target.getAttribute("data-index"));
+                const selectedQuantity = parseInt(e.target.value);
+                cart[index].quantity = selectedQuantity;
+                updateCartDisplay();
+            }
+        });
+
+        // Event listener for removing items
+        document.addEventListener("click", (e) => {
+            if (e.target.classList.contains("remove")) {
+                const index = parseInt(e.target.getAttribute("data-index"));
+                cart.splice(index, 1);
+                updateCartDisplay();
+            }
+        });
+
+        // Event listener for placing an order (you can implement your logic here)
+        document.getElementById("place-order").addEventListener("click", () => {
+            // Implement your order placement logic here
+            alert("Order placed!");
+            cart.length = 0; // Clear the cart after placing the order
+            updateCartDisplay();
+        });
+
+        // Initial render
+        updateCartDisplay();
+    </script>
+</body>
+</html>

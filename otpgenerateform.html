@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Verification Form</title>
+</head>
+<body>
+
+<h1>OTP Verification Form</h1>
+
+<form action="#" method="post" id="otp-form">
+  <input type="tel" name="mobile_number" id="mobile-number" placeholder="Enter your mobile number">
+  <input type="submit" value="Send OTP">
+</form>
+
+<script type="text/javascript" src="https://media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
+<script>
+// Twilio Account SID
+const accountSid = "ACf08bee57ea147a768ce06ecfe426cb28";
+
+// Twilio Auth Token
+const authToken = "7da0102ead14b646fd19ac318e780d63";
+
+// Twilio Verify Service SID
+const verifyServiceSid = "VA08d0a10fe88d08dddb592e33d9600d17";
+
+// Generate an OTP
+function generateOTP()  {
+  var digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  var otp = "";
+  for (var i = 0; i < 6; i++) {
+    otp += digits[Math.floor(Math.random() * digits.length)];
+  }
+  return otp;
+}
+
+// Send the OTP to the user's mobile number
+async function sendOTP(mobileNumber, otp) {
+  // Create a Twilio Client
+  const client = new Twilio(accountSid, authToken);
+
+  // Send an SMS message with the OTP
+  await client.messages.create({
+    to: mobileNumber,
+    from: "+919555070737",
+    body: `Your OTP is ${otp}.`
+  });
+
+  // Display a success message to the user
+  alert("OTP sent successfully!");
+}
+
+// Verify the OTP entered by the user
+async function verifyOTP(otp, mobileNumber) {
+  // Create a Twilio Client
+  const client = new Twilio(accountSid, authToken);
+
+  // Verify the OTP
+  const verification = await client.verify.services(verifyServiceSid).verificationChecks.create({
+    to: mobileNumber,
+    code: otp
+  });
+
+  // If the OTP is valid, display a success message to the user
+  // otherwise, display an error message
+  if (verification.status === "approved") {
+    alert("OTP verified successfully!");
+  } else {
+    alert("Invalid OTP!");
+  }
+}
+
+// Submit the form
+document.querySelector("#otp-form").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  // Get the mobile number from the form
+  var mobileNumber = document.querySelector("#mobile-number").value;
+
+  // Generate an OTP
+  var otp = generateOTP();
+
+  // Send the OTP to the user's mobile number
+  await sendOTP(mobileNumber, otp);
+
+  // Prompt the user to enter the OTP
+  var userOTP = prompt("Please enter the OTP sent to your mobile number:");
+
+  // Verify the OTP
+  await verifyOTP(userOTP, mobileNumber);
+});
+</script>
+
+</body>
+</html>

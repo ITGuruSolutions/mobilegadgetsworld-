@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileGadgetsWorld</title>
+    <!-- Include Bootstrap and Tailwind CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Include Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <style>
+    @media (max-width: 768px) {
+            .feedback-form textarea {
+                max-width: 100%;
+                width: 100%;
+                overflow-x: hidden;
+                word-wrap: break-word;
+            }
+        }
+
+        /* Add CSS for desktop view */
+        @media (min-width: 769px) {
+            .feedback-form textarea {
+                width: 100%;
+                overflow-x: hidden;
+                word-wrap: break-word;
+            }
+        }
+
+        
+ 
+        /* Style for the empty h5 element */
+        .h5-fot {
+            position: relative;
+            color: #007BFF; /* Text color */
+            padding: 10px; /* Padding to create a box-like appearance */
+            transition: color 0.3s ease-in-out; /* Smooth transition for text color */
+        }
+
+        /* Pseudo-element for hover effect */
+     .h5-fot::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #007BFF; /* Background color */
+            opacity: 0; /* Initially hidden */
+            transition: opacity 0.3s ease-in-out; /* Smooth transition for opacity */
+            z-index: -1; /* Place it behind the text */
+        }
+
+        /* Hover effect for the h5 element */
+  .h5-fot:hover {
+            color: white; /* Change text color on hover */
+        }
+
+        /* Hover effect for the pseudo-element */
+   .h5-fot:hover::before {
+            opacity: 1; /* Show the background on hover */
+        }
+
+        /* Zoom effect for icons */
+        .btn-floating i {
+            transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        /* Hover effect for icons */
+        .btn-floating:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3e4551;
+            color: white;
+            position: relative;
+        }
+        .icon-red { color: #FF5733; }
+        .icon-green { color: #25D366; }
+        .icon-blue { color: #007BFF; }
+        .icon-yellow { color: #FFC107; }
+
+        /* Feedback Form Styles */
+        .feedback-form {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style the form label */
+        .feedback-form label {
+            font-weight: bold;
+        }
+
+        /* Style the submit button */
+        .feedback-form button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        /* Style the submit button on hover */
+        .feedback-form button:hover {
+            background-color: #0056b3;
+        }
+        
+        /* Additional styles */
+        .footer-text {
+            margin-top: 20px;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+
+        .feedback-form {
+            margin-top: 20px;
+        }
+
+        /* Add spacing between h5 and p tags */
+        .contact-info {
+            margin-bottom: 20px; /* Adjust the margin as needed */
+        }
+
+        .footer-text {
+    background-color: #333; /* Add background color if desired */
+    color: #fff; /* Text color */
+    padding: 1rem; /* Adjust padding as needed */
+    width: 100%; /* Make it full-width */
+}
+
+
+/* Add media queries for other screen sizes if needed */
+
+    </style>
+</head>
+<body>
+    <!-- Footer Started -->
+    <footer class="text-center text-lg-start text-white">
+        <div class="container p-4 pb-0">
+            <!-- First row: About, Products, Contact Details -->
+            <div class="row">
+                <!-- About -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase h5-fot">About MobileGadgetsWorld</h5>
+                    <p class="mt-4">
+                        MobileGadgetsWorld is your one-stop shop for premium tech accessories and services. Our inventory includes high-quality products like Apple AirPods, Samsung watches, Fossil watches, Samsung earbuds, Noise watches, Noise earbuds, and original mobile devices. We pride ourselves on offering genuine items and providing professional mobile repair services. Our dedication is to enhance your tech experience with top-notch accessories and expert repairs. Explore the world of gadgets where quality meets convenience. Elevate your tech game with MobileGadgetsWorld!
+                    </p>
+                </div>
+
+                <!-- Products -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase h5-fot">Products</h5>
+                    <div class="row mt-1">
+                        <div class="col">
+                            <a class="btn btn-floating m-1" href="#">
+                                <i class="fas fa-headphones icon-red"></i>
+                            </a>
+                            <p>AirPods</p>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-floating m-1" href="#">
+                                <i class="fas fa-clock icon-blue"></i>
+                            </a>
+                            <p>Watches</p>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-floating m-1" href="#">
+                                <i class="fas fa-charging-station icon-yellow"></i>
+                            </a>
+                            <p>Chargers</p>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-floating m-1" href="#">
+                                <i class="fas fa-mobile icon-green"></i>
+                            </a>
+                            <p>Mobiles</p>
+                        </div>
+                    </div>
+                    <div class="feedback-form">
+                        <form>
+                            <div class="mb-3">
+                                <label for="feedback" class="form-label">Your Feedback</label>
+                                <textarea class="form-control" id="feedback" name="feedback" rows="3" placeholder="Enter your feedback here"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Details -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="text-uppercase contact-info h5-fot">Contact Details</h5>
+                    <!-- Custom class for Google Maps container -->
+                    <div class="custom-google-map-container">
+                        <iframe
+                            class="w-100 h-100"
+                            style="border:0"
+                            loading="lazy"
+                            allowfullscreen
+                            referrerpolicy="no-referrer-when-downgrade"
+                            src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDVkoOHBw8p8URjt4Nj8A3OCfeMF5IjMzw&q=28.491425,77.318612">
+                        </iframe>
+                    </div>
+                </div>
+    </div>
+            <!-- First row: About, Products, Contact Details -->
+
+            <hr class="mb-4">
+
+            <!-- Second row: Connect with Us -->
+            <div class="row">
+                <!-- Connect with Us -->
+                <div class="col">
+                    <h5 class="text-uppercase h5-fot">Connect with Us</h5>
+                    <!-- Social media links -->
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/mobilegadgetsworld/" role="button">
+                        <i class="fab fa-instagram" style="font-size: 16px; color: #E1306C;"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://wa.me/9555070737" role="button">
+                        <i class="fab fa-whatsapp" style="font-size: 16px; color: #25D366;"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="mailto:worldmobilegadgets@gmail.com" role="button">
+                        <i class="far fa-envelope" style="font-size: 16px; color: #FF0000;"></i>
+                    </a>
+                    <a class="btn btn-outline-light btn-floating m-1" href="tel:+919555070737" role="button">
+                        <i class="fas fa-phone" style="font-size: 16px; color: #57e238;"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Second row: Connect with Us -->
+        </div>
+
+        <div class="text-center p-3 footer-text">
+            © 2021 MobileGadgetsWorld. All rights reserved.
+        </div>
+    </footer>
+    <!-- Footer Ended -->
+
+    <!-- Bootstrap and jQuery scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha"></script>
+</body>
+</html>

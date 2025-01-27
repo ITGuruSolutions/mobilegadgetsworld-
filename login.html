@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Sign Up</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <style>
+        /* Custom Styles */
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #4caf50, #2196f3);
+            background-size: 400% 400%;
+            animation: gradient 15s linear infinite;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body::before {
+            content: "💡🚀🌟"; /* Add your desired emojis here */
+            font-size: 150px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.1;
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group:last-child {
+            margin-bottom: 0;
+        }
+
+        #signupForm {
+            display: none;
+        }
+
+        #loginForm {
+            display: block;
+        }
+
+        .toggle-button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: underline;
+            transition: color 0.3s;
+        }
+
+        .toggle-button:hover {
+            color: #4caf50;
+        }
+
+        #signupBtn, #loginBtn {
+            background: linear-gradient(45deg, #4caf50, #2196f3);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #signupBtn:hover, #loginBtn:hover {
+            background: linear-gradient(45deg, #45a049, #1976d2);
+        }
+
+        .google-login-button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .google-login-button:hover {
+            background-color: #357ae8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center" id="formTitle">Login</h2>
+        <form method="post" id="loginForm">
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control" required>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" id="loginBtn">Login</button>
+            </div>
+        </form>
+        <form method="post" id="signupForm">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <input type="password" name="password-check" placeholder="Re Enter Password" class="form-control" required>
+            </div>
+            <div class="form-group text-center">
+                <button type="submit" id="signupBtn">Sign Up</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <p id="toggleText">Don't have an account? <a href="/signup.html" class="toggle-button" id="toggleBtn">Sign Up</a></p>
+            <p id="loginLink" style="display:none;">Already have an account? <a href="/login.html" class="toggle-button" id="loginToggleBtn">Login</a></p>
+            <p>Or login with:</p>
+            <a href="#" id="googleBtn" class="btn btn-danger"><i class="fab fa-google"></i> Login with Google</a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Simulate Google login logic
+            $('#googleBtn').click(function () {
+                alert("Logged in with Google!");
+            });
+
+            // Toggle between Sign Up and Login forms
+            $('#toggleBtn, #loginToggleBtn').click(function () {
+                $('#signupForm').toggle();
+                $('#loginForm').toggle();
+                var currentForm = $('#loginForm').css('display') === 'block' ? 'Login' : 'Sign Up';
+                $('#formTitle').text(currentForm);
+                $('#toggleText').toggle();
+                $('#loginLink').toggle();
+            });
+
+            // Password Check Validation
+            $('#signupForm').submit(function (e) {
+                var password = $('#signupForm input[name="password"]').val();
+                var passwordCheck = $('#signupForm input[name="Re Enter Password"]').val();
+                if (password !== passwordCheck) {
+                    alert("Password and Password Check must match.");
+                    e.preventDefault(); // Prevent form submission
+                }
+            });
+        });
+    </script>
+</body>
+</html>
